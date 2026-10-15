@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1220">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ALI PRO TRADER">
+<link rel="manifest" href="manifest.json">
+<title>ALI PRO TRADER</title>
+<style>
+:root{--bg:#080d17;--panel:#101827;--panel2:#151f30;--line:#243147;--text:#f2f5fb;--muted:#94a3b8;--gold:#f3c969;--green:#38d39f;--red:#ff6b7b;--blue:#79a9ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#15233a 0%,var(--bg) 48%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;padding-bottom:92px}
+header{padding:22px 18px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:850px;margin:auto}
+.brand{display:flex;align-items:center;gap:10px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(145deg,#f8dc8b,#b8862b);color:#111827;display:grid;place-items:center;font-weight:900;font-size:20px;box-shadow:0 6px 22px #f3c96922}
+h1{font-size:17px;letter-spacing:.3px;margin:0}.subtitle{font-size:11px;color:var(--muted);margin-top:4px}
+.pill{font-size:11px;padding:7px 10px;border:1px solid #735d2e;border-radius:99px;color:var(--gold);background:#302714}
+main{max-width:850px;margin:auto;padding:0 14px}.notice{border:1px solid #745b27;background:#251e11;color:#f8df9a;border-radius:13px;padding:11px 12px;font-size:12px;line-height:1.7;margin-bottom:14px}
+.section-title{display:flex;align-items:center;justify-content:space-between;margin:22px 2px 11px}.section-title h2{font-size:15px;margin:0}.muted{color:var(--muted);font-size:12px}
+.card{background:linear-gradient(150deg,#121d2e,#0f1725);border:1px solid var(--line);border-radius:18px;padding:15px;margin-bottom:12px;box-shadow:0 10px 30px #00000014}
+.market-top{display:flex;justify-content:space-between;align-items:center;gap:12px}.market-name{font-weight:700;font-size:15px}.price{font-size:25px;font-weight:750;margin-top:8px;direction:ltr;text-align:right}.change{color:var(--green);font-size:12px;direction:ltr;text-align:right;margin-top:4px}
+select,input,textarea{width:100%;border:1px solid #2a3850;background:#0b1321;color:var(--text);border-radius:11px;padding:12px;font:inherit;font-size:14px;outline:none}
+select:focus,input:focus,textarea:focus{border-color:var(--blue)}label{display:block;font-size:12px;color:var(--muted);margin:0 0 7px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.metric{background:#0a1321;border:1px solid #1d2b40;border-radius:12px;padding:11px}.metric .k{font-size:11px;color:var(--muted)}.metric .v{font-size:15px;font-weight:700;margin-top:7px}
+.chart-wrap{height:175px;margin-top:12px;background:#0b1422;border:1px solid #1d2b40;border-radius:13px;overflow:hidden}canvas{width:100%;height:100%}
+.signal{display:flex;align-items:center;justify-content:space-between;gap:12px}.signal-status{display:inline-block;padding:7px 12px;border-radius:10px;background:#252b37;color:#d4dbea;font-weight:700;font-size:13px}.signal-status.buy{background:#10372e;color:var(--green)}.signal-status.sell{background:#3a1d29;color:var(--red)}
+.btn{border:0;border-radius:12px;padding:12px 15px;font:inherit;font-weight:700;cursor:pointer;background:linear-gradient(135deg,#f5d889,#d9ad4d);color:#15191f;width:100%}.btn.secondary{background:#18253a;color:#dce7fa;border:1px solid #2a3b56}.btn.small{width:auto;padding:9px 12px;font-size:12px}
+.disclaimer{font-size:11px;color:var(--muted);line-height:1.7}
+nav{position:fixed;bottom:0;left:0;right:0;background:#0b1220f2;backdrop-filter:blur(16px);border-top:1px solid #243147;padding:8px 8px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);z-index:10}
+nav button{border:0;background:none;color:#8190a8;font:inherit;font-size:10px;padding:7px 2px;display:flex;align-items:center;flex-direction:column;gap:5px}nav button.active{color:var(--gold)}nav .ico{font-size:19px}
+.page{display:none}.page.active{display:block}.chat{height:220px;overflow:auto;display:flex;flex-direction:column;gap:9px;margin-bottom:12px}.bubble{padding:11px 12px;border-radius:13px;max-width:92%;font-size:13px;line-height:1.7}.bubble.bot{background:#18263a;align-self:flex-start;border-bottom-right-radius:4px}.bubble.user{background:#2b3850;align-self:flex-end;border-bottom-left-radius:4px}.chat-entry{display:flex;gap:8px}.chat-entry input{flex:1;min-width:0}.empty{text-align:center;padding:22px;color:var(--muted);font-size:13px}
+@media(min-width:650px){main{padding:0 22px}.dashboard-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;align-items:start}.dashboard-grid .card{height:100%}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">A</div><div><h1>ALI PRO TRADER</h1><div class="subtitle">مساعد تحليل الأسواق</div></div></div><span class="pill">نسخة تجريبية</span></header>
+<main>
+<div class="notice">⚠️ <b>وضع العرض التجريبي:</b> الأسعار والرسم والإشارات في هذه النسخة توضيحية وليست بيانات سوق مباشرة أو توصية مالية.</div>
+<section id="dashboard" class="page active">
+  <div class="section-title"><h2>نظرة عامة</h2><span class="muted">Demo Mode</span></div>
+  <div class="dashboard-grid">
+    <div class="card">
+      <div class="market-top"><div><div class="muted">السوق المحدد</div><div class="market-name" id="selectedName">الذهب · XAU/USD</div></div><span class="pill">تجريبي</span></div>
+      <div class="price" id="demoPrice">2,345.60</div><div class="change">بيانات افتراضية فقط</div>
+      <div class="chart-wrap"><canvas id="chart"></canvas></div>
+      <div class="grid3" style="margin-top:10px"><div class="metric"><div class="k">الاتجاه</div><div class="v">عرض توضيحي</div></div><div class="metric"><div class="k">RSI</div><div class="v">—</div></div><div class="metric"><div class="k">ATR</div><div class="v">—</div></div></div>
+    </div>
+    <div class="card">
+      <div class="section-title" style="margin-top:0"><h2>اختر السوق</h2></div>
+      <label for="market">فئة السوق</label><select id="market"><option value="gold">الذهب</option><option value="forex">الفوركس</option><option value="indices">المؤشرات</option><option value="crypto">العملات الرقمية</option></select>
+      <label for="symbol" style="margin-top:12px">الأداة المالية</label><select id="symbol"></select>
+      <label for="timeframe" style="margin-top:12px">الإطار الزمني</label><select id="timeframe"><option>15 دقيقة</option><option selected>ساعة</option><option>4 ساعات</option><option>يومي</option></select>
+      <button class="btn" id="analyzeBtn" style="margin-top:14px">تحليل توضيحي</button>
+      <p class="disclaimer" style="margin-bottom:0">سيتم ربط بيانات حقيقية لاحقاً بعد اختيار مصدر مناسب ومجاني.</p>
+    </div>
+  </div>
+  <div class="section-title"><h2>بطاقة الإشارة</h2><span class="muted">قواعد تجريبية</span></div>
+  <div class="card">
+    <div class="signal"><div><div class="muted">النتيجة الحالية</div><div style="font-size:17px;font-weight:750;margin-top:7px" id="signalTitle">لا توجد إشارة حقيقية</div></div><span class="signal-status" id="signalBadge">انتظار</span></div>
+    <p id="signalExplain" style="font-size:13px;line-height:1.8;color:#c6d0e0">لا يمكن إصدار إشارة موثوقة قبل توصيل بيانات السوق الفعلية وحساب المؤشرات.</p>
+    <div class="grid3"><div class="metric"><div class="k">الدخول</div><div class="v">—</div></div><div class="metric"><div class="k">وقف الخسارة</div><div class="v">—</div></div><div class="metric"><div class="k">الهدف</div><div class="v">—</div></div></div>
+  </div>
+</section>
+<section id="markets" class="page">
+  <div class="section-title"><h2>الأسواق</h2><span class="muted">قائمة الأدوات</span></div>
+  <div class="card"><p style="line-height:1.8;font-size:13px;margin-top:0">اختر أداة لتحديث اختيارك. القيم التالية أسماء أدوات فقط؛ لا تعني أن أسعارها متصلة بالسوق.</p><div id="marketList"></div></div>
+</section>
+<section id="assistant" class="page">
+  <div class="section-title"><h2>المساعد الذكي</h2><span class="muted">نموذج أولي</span></div>
+  <div class="card"><div class="chat" id="chat"><div class="bubble bot">أهلاً بك في ALI PRO TRADER. أستطيع في هذا النموذج شرح مفاهيم التحليل الفني وإدارة المخاطر. لم يتم ربط نموذج ذكاء اصطناعي أو بيانات حية بعد.</div></div>
+  <div class="chat-entry"><input id="question" placeholder="مثلاً: ما معنى RSI؟" aria-label="اكتب سؤالك"><button class="btn small" id="sendBtn">إرسال</button></div>
+  <p class="disclaimer">الإجابات في هذه النسخة مبنية على قواعد محلية بسيطة، وليست اتصالاً بخدمة ذكاء اصطناعي خارجية.</p></div>
+  <div class="section-title"><h2>أسئلة جاهزة</h2></div>
+  <div class="grid2"><button class="btn secondary preset">ما هو RSI؟</button><button class="btn secondary preset">كيف أحدد وقف الخسارة؟</button><button class="btn secondary preset">ما معنى EMA 50 و200؟</button><button class="btn secondary preset">كيف أدير المخاطر؟</button></div>
+</section>
+<section id="risk" class="page">
+  <div class="section-title"><h2>حاسبة المخاطر</h2><span class="muted">حساب محلي</span></div>
+  <div class="card">
+    <p class="disclaimer">أدخل أرقاماً افتراضية لحساب المسافة بين الدخول ووقف الخسارة. هذه الحاسبة لا ترسل أوامر إلى وسيط.</p>
+    <div class="grid2"><div><label for="entry">سعر الدخول</label><input id="entry" type="number" step="any" placeholder="مثال: 2345.60"></div><div><label for="stop">وقف الخسارة</label><input id="stop" type="number" step="any" placeholder="مثال: 2338.00"></div><div><label for="target">الهدف</label><input id="target" type="number" step="any" placeholder="مثال: 2360.00"></div><div><label for="balance">رصيد الحساب (€ أو $)</label><input id="balance" type="number" step="any" placeholder="مثال: 1000"></div><div><label for="riskPct">المخاطرة %</label><input id="riskPct" type="number" step="0.1" min="0.1" max="2" value="0.5"></div></div>
+    <button class="btn" id="calcBtn" style="margin-top:14px">احسب المخاطرة</button>
+    <div id="calcResult" class="metric" style="margin-top:12px"><div class="k">النتيجة</div><div class="v">أدخل القيم ثم اضغط احسب</div></div>
+  </div>
+</section>
+</main>
+<nav><button class="active" data-page="dashboard"><span class="ico">◈</span>الرئيسية</button><button data-page="markets"><span class="ico">▥</span>الأسواق</button><button data-page="assistant"><span class="ico">✦</span>المساعد</button><button data-page="risk"><span class="ico">◎</span>المخاطر</button></nav>
+<script>
+const instruments={gold:[["XAU/USD","الذهب · XAU/USD","2,345.60"],["XAG/USD","الفضة · XAG/USD","29.40"]],forex:[["EUR/USD","اليورو / الدولار","1.0842"],["GBP/USD","الجنيه / الدولار","1.2710"],["USD/JPY","الدولار / الين","149.20"]],indices:[["US500","S&P 500","5,320.00"],["NAS100","Nasdaq 100","18,450.00"],["GER40","DAX 40","18,200.00"]],crypto:[["BTC/USD","بيتكوين","67,500.00"],["ETH/USD","إيثيريوم","3,520.00"]]};
+const market=document.getElementById('market'),symbol=document.getElementById('symbol');
+function fillSymbols(){const items=instruments[market.value];symbol.innerHTML=items.map(x=>`<option value="${x[0]}">${x[1]}</option>`).join('');updateSelected()}
+function updateSelected(){const item=instruments[market.value].find(x=>x[0]===symbol.value)||instruments[market.value][0];document.getElementById('selectedName').textContent=item[1];document.getElementById('demoPrice').textContent=item[2];}
+market.addEventListener('change',fillSymbols);symbol.addEventListener('change',updateSelected);
+document.getElementById('analyzeBtn').addEventListener('click',()=>{document.getElementById('signalTitle').textContent='التحليل غير متاح بعد';document.getElementById('signalExplain').textContent='تم اختيار '+symbol.value+' على إطار '+document.getElementById('timeframe').value+'. الخطوة التالية هي ربط مصدر بيانات حقيقي ثم حساب EMA وRSI وATR على شموع مكتملة؛ لن نعرض شراء أو بيع اعتماداً على أسعار افتراضية.';document.getElementById('signalBadge').textContent='انتظار';document.getElementById('signalBadge').className='signal-status';});
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===b.dataset.page));window.scrollTo({top:0,behavior:'smooth'});}));
+const marketList=document.getElementById('marketList');Object.entries(instruments).forEach(([cat,items])=>{const h=document.createElement('h3');h.textContent=({gold:'الذهب والمعادن',forex:'الفوركس',indices:'المؤشرات',crypto:'العملات الرقمية'})[cat];h.style.fontSize='14px';marketList.appendChild(h);items.forEach(it=>{const row=document.createElement('button');row.className='btn secondary';row.style.marginBottom='7px';row.style.textAlign='right';row.textContent=it[1]+'  ·  '+it[0];row.addEventListener('click',()=>{market.value=cat;fillSymbols();symbol.value=it[0];updateSelected();document.querySelector('nav button[data-page="dashboard"]').click()});marketList.appendChild(row)})});
+function answer(q){q=q.toLowerCase();if(q.includes('rsi'))return 'مؤشر RSI يقيس قوة الزخم من 0 إلى 100. غالباً تُراقَب مناطق فوق 70 أو تحت 30، لكنها لا تعني وحدها بيعاً أو شراءً؛ الأفضل دمجه مع الاتجاه والسياق.';if(q.includes('وقف')||q.includes('خسارة'))return 'وقف الخسارة يجب أن يرتبط بمستوى يُبطل فكرة الصفقة، لا برقم عشوائي. احسب حجم الصفقة بحيث لا تتجاوز خسارتك المحتملة نسبة صغيرة من رصيدك، وتذكّر أن الفجوات والانزلاق قد يزيدان الخسارة.';if(q.includes('ema'))return 'EMA 50 وEMA 200 متوسطان متحركان أسيّان. قد يساعدان في قراءة الاتجاه، لكن تقاطعهما متأخر ولا يضمن اتجاه السعر مستقبلاً.';if(q.includes('مخاطر')||q.includes('إدارة'))return 'إدارة المخاطر تعني تحديد الخسارة المقبولة قبل الدخول، ووضع وقف منطقي، وتجنب مضاعفة العقود لتعويض الخسائر. اختبر أي قاعدة على حساب تجريبي أولاً.';return 'هذا النموذج الأولي لا يتصل بعد بذكاء اصطناعي مباشر أو ببيانات حية. أستطيع حالياً شرح RSI وEMA ووقف الخسارة وإدارة المخاطر. في الإصدار التالي نضيف مصدراً مناسباً للبيانات ثم نربط المساعد.'}
+function send(q){if(!q.trim())return;const chat=document.getElementById('chat');const u=document.createElement('div');u.className='bubble user';u.textContent=q;chat.appendChild(u);const a=document.createElement('div');a.className='bubble bot';a.textContent=answer(q);chat.appendChild(a);document.getElementById('question').value='';chat.scrollTop=chat.scrollHeight}
+document.getElementById('sendBtn').addEventListener('click',()=>send(document.getElementById('question').value));document.getElementById('question').addEventListener('keydown',e=>{if(e.key==='Enter')send(e.target.value)});document.querySelectorAll('.preset').forEach(b=>b.addEventListener('click',()=>send(b.textContent)));
+document.getElementById('calcBtn').addEventListener('click',()=>{const e=Number(document.getElementById('entry').value),s=Number(document.getElementById('stop').value),t=Number(document.getElementById('target').value),bal=Number(document.getElementById('balance').value),pct=Number(document.getElementById('riskPct').value);const out=document.getElementById('calcResult');if(!(e>0&&s>0&&t>0&&bal>0&&pct>0&&pct<=2)||e===s){out.innerHTML='<div class="k">النتيجة</div><div class="v">تحقق من إدخال قيم صحيحة. يجب ألا يساوي وقف الخسارة سعر الدخول.</div>';return}const risk=Math.abs(e-s),reward=Math.abs(t-e),money=bal*pct/100,rr=reward/risk;out.innerHTML=`<div class="k">نتيجة تقريبية (لا تشمل الرسوم أو قيمة النقطة)</div><div class="v">المسافة إلى الوقف: ${risk.toFixed(5)}</div><div class="v">المسافة إلى الهدف: ${reward.toFixed(5)}</div><div class="v">نسبة العائد إلى المخاطرة: 1 : ${rr.toFixed(2)}</div><div class="v">المبلغ المعرض للخطر حسب النسبة: ${money.toFixed(2)}</div><p class="disclaimer">هذه ليست توصية تداول. لا يمكن حساب حجم العقد بدقة دون معرفة الرمز والوسيط وقيمة النقطة.</p>`;});
+function drawChart(){const c=document.getElementById('chart');if(!c)return;const rect=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1;c.width=rect.width*dpr;c.height=rect.height*dpr;const ctx=c.getContext('2d');ctx.scale(dpr,dpr);const w=rect.width,h=rect.height;ctx.strokeStyle='#1e2b3e';ctx.lineWidth=1;for(let y=25;y<h;y+=35){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}let seed=7,prev=h*.62;for(let i=0;i<34;i++){seed=(seed*9301+49297)%233280;let delta=((seed/233280)-.48)*32;let open=prev,close=Math.max(18,Math.min(h-12,open+delta));let high=Math.min(open,close)-4-(seed%8),low=Math.max(open,close)+4+(seed%8);const x=8+i*(w-16)/34;ctx.strokeStyle=close<open?'#ff6b7b':'#38d39f';ctx.fillStyle=ctx.strokeStyle;ctx.beginPath();ctx.moveTo(x,high);ctx.lineTo(x,low);ctx.stroke();ctx.fillRect(x-2.5,Math.min(open,close),5,Math.max(3,Math.abs(close-open)));prev=close;}}
+window.addEventListener('resize',drawChart);fillSymbols();setTimeout(drawChart,60);
+if('serviceWorker' in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+</body></html>

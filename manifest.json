@@ -1,0 +1,11 @@
+{
+  "name": "ALI PRO TRADER",
+  "short_name": "ALI PRO",
+  "description": "مساعد تحليل الأسواق - نسخة تجريبية",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#080d17",
+  "theme_color": "#0b1220",
+  "lang": "ar",
+  "dir": "rtl"
+}
